@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="RECORDS" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:circleImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="MrozuDB.Records">
+
+    <ListView x:Name="LVRecords"
+                HasUnevenRows="True"
+                SeparatorVisibility="None"
+                ItemSelected="LVRecords_ItemSelected"
+                ItemsSource="{Binding Records}"
+                SelectedItem="{Binding SelectedRecord,Mode=TwoWay}"
+                IsPullToRefreshEnabled="False">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+
+                        <circleImage:CircleImage Source="{Binding Image}" Margin="7,0,7,15">
+
+                            <circleImage:CircleImage.WidthRequest>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android" Value="65"/>
+                                    <On Platform="iOS" Value="65"/>
+                                </OnPlatform>
+                            </circleImage:CircleImage.WidthRequest>
+
+                            <circleImage:CircleImage.HeightRequest>
+                                <OnPlatform x:TypeArguments="x:Double">
+                                    <On Platform="Android" Value="65"/>
+                                    <On Platform="iOS" Value="65"/>
+                                </OnPlatform>
+                            </circleImage:CircleImage.HeightRequest>
+                        </circleImage:CircleImage>
+
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding rec_title}"
+                                    Margin="0,17,0,0"
+                                    FontAttributes="Bold"
+                                    TextColor="Black"
+                                    FontSize="20"/>
+                            <Label Text="{Binding rec_artician}"
+                                    TextColor="Red"
+                                    FontSize="15"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>

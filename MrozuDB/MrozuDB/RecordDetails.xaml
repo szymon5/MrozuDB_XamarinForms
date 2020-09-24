@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="True"
+             x:Class="MrozuDB.RecordDetails">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Listen on YouTube" Command="{Binding ListenOnYouTubeCommand}"/>
+    </ContentPage.ToolbarItems>
+    
+    <StackLayout Orientation="Vertical">
+        <StackLayout>
+            <ListView IsPullToRefreshEnabled="False"
+                  IsEnabled="False"
+                  HasUnevenRows="True"
+                  SeparatorVisibility="None"
+                  ItemsSource="{Binding RecordDetailsLayoutInfo}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="False">
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Image Source="{Binding ExtendedImage}" WidthRequest="500"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label x:Name="title" Text="{Binding rec_title}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                                    <Label Text="{Binding release_date}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" FontAttributes="Bold" TextColor="Black"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        
+        
+        <StackLayout>
+            <ListView IsPullToRefreshEnabled="False"
+                  HasUnevenRows="True"
+                  WidthRequest="100"
+                  ItemsSource="{Binding RecordDetailslistViewInfo}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="False">
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout>
+                                    <Label Text="{Binding Number}" FontSize="30" TextColor="Black" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding song_title}" HorizontalOptions="Start" VerticalOptions="Start" TextColor="Black" FontAttributes="Bold" FontSize="20"/>
+                                    <Label Text="{Binding duration}" HorizontalOptions="Start" VerticalOptions="Start" FontSize="20"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+
+</ContentPage>

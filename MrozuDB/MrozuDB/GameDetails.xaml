@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MrozuDB.GameDetails">
+
+    <StackLayout Orientation="Vertical">
+        <StackLayout HeightRequest="600">
+            <ListView x:Name="LVGameDetails"
+              HasUnevenRows="True"
+              IsEnabled="False"
+              IsPullToRefreshEnabled="False"
+              SeparatorVisibility="None"
+              ItemsSource="{Binding GameDetailsInfo}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell IsEnabled="False">
+                            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                <Image Source="{Binding ExtendedImage}" WidthRequest="1000"/>
+                                <Label Text="{Binding game_title}" FontSize="20" TextColor="Black" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                                <Label Text="{Binding release_date,StringFormat='Premiere date: {0}'}"/>
+                                <Label Text="{Binding game_description}" FontSize="20"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <StackLayout VerticalOptions="EndAndExpand">
+            <Button
+                Text="See Trailer"
+                Command="{Binding SeeGameTrailerCommand}">
+
+                <Button.FontSize>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android" Value="20"/>
+                        <On Platform="iOS" Value="25"/>
+                    </OnPlatform>
+                </Button.FontSize>
+
+            </Button>
+
+        </StackLayout>
+    </StackLayout>
+    
+
+</ContentPage>

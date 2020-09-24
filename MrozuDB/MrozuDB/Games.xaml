@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage Title="GAMES" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:circleImage="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             mc:Ignorable="d"
+             x:Class="MrozuDB.Games">
+
+    <ListView x:Name="LVGames"
+              HasUnevenRows="True"
+              SeparatorVisibility="None"
+              IsPullToRefreshEnabled="False"
+              ItemsSource="{Binding Games}"
+              ItemSelected="LVGames_ItemSelected"
+              SelectedItem="{Binding SelectedGame,Mode=TwoWay}">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <circleImage:CircleImage WidthRequest="65" Source="{Binding Image}" Margin="7,15,10,7"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding game_title}"
+                                   Margin="0,17,0,0"
+                                   FontAttributes="Bold"
+                                   TextColor="Black"
+                                   FontSize="20"/>
+                            <Label Text="{Binding company}"
+                                   TextColor="Red"
+                                   FontSize="15"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>
