@@ -59,6 +59,7 @@ namespace MrozuDB.ViewModel
         {
             if (game == null) return;
             string gameID = game.game_id;
+            Help.gameTitle = game.game_title;
             SelectedGame = null;
             await pageService.PushAsync(new GameDetails(gameID));
         }
